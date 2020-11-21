@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="/favicon.png" class="w-32">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -11,6 +11,15 @@
                 {{ session('status') }}
             </div>
         @endif
+
+        <div class="w-full grid grid-cols-2">
+            <div class="text-center rounded-l-full bg-blue-500 py-2 text-black hover:bg-blue-700 hover:text-white">
+                <a href="{{route('login')}}">Login</a>
+            </div>
+            <div class="text-center rounded-r-full bg-green-500 py-2 text-black hover:bg-green-700 hover:text-white">
+                <a href="{{route('register')}}">Register</a>
+            </div>
+        </div>
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
