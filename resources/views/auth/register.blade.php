@@ -5,14 +5,7 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-        <div class="w-full grid grid-cols-2">
-            <div class="text-center rounded-l-full bg-green-500 py-2 text-black hover:bg-green-700 hover:text-white">
-                <a href="{{route('login')}}">Login</a>
-            </div>
-            <div class="text-center rounded-r-full bg-blue-500 py-2 text-black hover:bg-blue-700 hover:text-white">
-                <a href="{{route('register')}}">Register</a>
-            </div>
-        </div>
+        
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -36,7 +29,9 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 px-2" href="{{route('login')}}">{{_('Don`t have account?')}}
+                </a>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>

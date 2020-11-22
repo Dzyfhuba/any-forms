@@ -7,19 +7,10 @@
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <div class="w-full grid grid-cols-2">
-            <div class="text-center rounded-l-full bg-blue-500 py-2 text-black hover:bg-blue-700 hover:text-white">
-                <a href="{{route('login')}}">Login</a>
-            </div>
-            <div class="text-center rounded-r-full bg-green-500 py-2 text-black hover:bg-green-700 hover:text-white">
-                <a href="{{route('register')}}">Register</a>
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
         </div>
+        @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -41,11 +32,13 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 px-2" href="{{route('register')}}">{{_('already have account?')}}
+                </a>
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
                 @endif
 
                 <x-jet-button class="ml-4">
@@ -53,5 +46,9 @@
                 </x-jet-button>
             </div>
         </form>
+        <div class="w-full text-center">
+
+        </div>
     </x-jet-authentication-card>
+    
 </x-guest-layout>
